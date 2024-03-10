@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://unpkg.com/vue@3.4.21/dist/vue.global.js" type="text/javascript"></script>
+        <style>
+            html, body{
+                height: 100%;
+            }
+            body{
+                display: grid;
+                place-items: center;
+            }
+            .text-red{
+                color: red;
+            }
+
+            .text-green{
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="app">
+        <!--bind classes to elements in vue- this is the otions API -->
+        <!--<button v-bind:class="buttonClasses"> Click here</button>-->
+        
+          <!--bind classes to elements in vue shorthand for events bindind : v-on:event shorthand is @event--> 
+          <button :class="buttonClasses" v-on:click="toggle1"> Click here 1</button><br>
+
+          <button :class="active ? 'text-red' : 'text-green'" v-on:click="toggle2"> Click here 2 </button>
+        </div>
+        <script>
+            Vue.createApp({
+
+                data(){
+                    return{
+                        buttonClasses: 'text-green',
+                        active: false
+                    };
+                },
+                //custom methods must be nested within the methods object
+                methods: {
+                    toggle1(){
+                        //alert('button clicked');
+                        this.buttonClasses = 'text-red';
+                    },
+                    toggle2(){
+                        //alert('button clicked');
+                        this.active = !this.active;
+                    }
+
+                }
+
+            }).mount('#app');
+
+        </script>
+    </body>
+</html>
