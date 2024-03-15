@@ -1,10 +1,14 @@
 import AssignmentList from "./AssignmentList.js";
+import AssignmentCreate from "./AssignmentCreate.js";
 export default {
-    components: { AssignmentList },
+    components: { AssignmentList, AssignmentCreate },
     template: `
     <section class="space-y-6">
     <assignment-list :assignments="filters.uncompletedAssignments" title="Un Completed Assignments"></assignment-list>
     <assignment-list :assignments="filters.completedAssignments" title="Completed Assignments"></assignment-list>
+    <assignment-create :assignments="assignments"></assignment-create>
+
+    
     </section>
     `,
     data() {
@@ -14,7 +18,8 @@ export default {
                 { name: 'Make dishes', complete: false, id: 2 },
                 { name: 'do laundry', complete: false, id: 3 },
                 { name: 'fishing', complete: false, id: 4 },
-            ]
+            ],
+
         };
     },
     computed: {
@@ -25,6 +30,11 @@ export default {
                 uncompletedAssignments: this.assignments.filter(assignment => !assignment.complete)
             }
         }
+    },
+    
+    methods: {
+       
     }
+
 
 }
