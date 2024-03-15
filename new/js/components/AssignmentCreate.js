@@ -20,11 +20,7 @@ export default{
         Add(){
             //e.preventDefault();
             //alert(this.newAssignment);
-            this.assignments.push({
-                name: this.newAssignment,
-                completed: false,
-                id: this.assignments.length +1
-            });
+            this.$emit('addAssignment', this.newAssignment);
 
             //clear the input after submission
             this.newAssignment = '';
